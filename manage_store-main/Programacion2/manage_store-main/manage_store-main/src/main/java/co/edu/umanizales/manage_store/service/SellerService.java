@@ -1,6 +1,5 @@
 package co.edu.umanizales.manage_store.service;
 
-import co.edu.umanizales.manage_store.controller.dto.VendedorxCantDTO;
 import co.edu.umanizales.manage_store.model.Seller;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -13,8 +12,6 @@ public class SellerService {
 
     public SellerService(){
         sellers = new ArrayList<>();
-        sellers.add(new Seller("1","Juan"));
-        sellers.add(new Seller("2","Ximena"));
     }
     public void addSeller(Seller seller){
         sellers.add(seller);}
@@ -29,5 +26,4 @@ public class SellerService {
       }
       return null;
     }
-
 }

@@ -2,7 +2,6 @@ package co.edu.umanizales.manage_store.service;
 
 import co.edu.umanizales.manage_store.controller.dto.BestSellerDTO;
 import co.edu.umanizales.manage_store.controller.dto.BestStoreDTO;
-import co.edu.umanizales.manage_store.controller.dto.VendedorxCantDTO;
 import co.edu.umanizales.manage_store.model.Sale;
 import co.edu.umanizales.manage_store.model.Seller;
 import co.edu.umanizales.manage_store.model.Store;
@@ -40,6 +39,7 @@ public class SaleService {
         }
         return sum;
     }
+
     public int getTotalSalesByStore(String codStore){
         int sum = 0 ;
         for (Sale sale:sales) {
@@ -71,5 +71,4 @@ public class SaleService {
         }
         return bestSellerDTO;
     }
-
 }

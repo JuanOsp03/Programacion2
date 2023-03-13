@@ -1,6 +1,7 @@
 package co.edu.umanizales.manage_store.controller;
 
-import co.edu.umanizales.manage_store.controller.dto.*;
+import co.edu.umanizales.manage_store.controller.dto.ResponseDTO;
+import co.edu.umanizales.manage_store.controller.dto.SaleDTO;
 import co.edu.umanizales.manage_store.model.Sale;
 import co.edu.umanizales.manage_store.model.Seller;
 import co.edu.umanizales.manage_store.model.Store;
@@ -72,27 +73,6 @@ public class SaleController {
             return new ResponseEntity<>(new ResponseDTO(409, "No hay ventas, no se puede obtener un promedio", null), HttpStatus.BAD_REQUEST);
     }
 
-
-    //-----------------------------------------------PROTOTIPO CASI FUNCIONAL ---------------------------------
-    public VendedorxCantDTO getCant(int cant){
-        int sales;
-        Seller vendedor;
-        VendedorxCantDTO SellerCant = new VendedorxCantDTO(new Seller("1","Juan"),0);
-        for (int i = 0; i == sellerService.getSellers().size(); i++) {
-            vendedor  = sellerService.getSellers().get(i);
-            String cod = vendedor.getCode();
-            sales = getTotalSalesBySeller(cod).getStatusCodeValue();
-            if (sales > cant) {
-               SellerCant = new VendedorxCantDTO(vendedor,sales);
-            }
-        }
-        return SellerCant;
-    }
-    @GetMapping(path = "/SellerxCantMoreOne/{cant}")
-    public ResponseEntity<ResponseDTO> getSellersCant(@PathVariable int cant){
-            return new ResponseEntity<>(new ResponseDTO(200, getCant(cant),null),HttpStatus.OK);
-    }
-//--------------------------------------------------------------------------------------------------------------
     @PostMapping
     public ResponseEntity<ResponseDTO> createSale(@RequestBody SaleDTO saleDTO) {
         Seller findSeller = sellerService.getSellerById(saleDTO.getSellerId());
